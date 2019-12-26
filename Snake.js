@@ -1,35 +1,52 @@
-import {game} from "./main.js"
+import { game } from "./main.js"
 
 export default class Snake {
-    constructor(name,color,x = Math.floor(Math.random() * game.size),y = Math.floor(Math.random() * game.size)){
+    constructor(name, color, x = Math.floor(Math.random() * game.size), y = Math.floor(Math.random() * game.size)) {
         this.name = name
         this.color = color
         this.x = x
         this.y = y
-        this.acX ; 
-        this.acY ;
+        this.direction;
+        this.tailSize = 7;
+        this.trail = [{x:this.x, y:this.y}]
+        this.score = 0
         this.move = {
-            left(snake){
-                snake.x -= 1
+            left(snake) {
+                if (game.checkBorder['left'](game.size)) { snake.x = game.size - 1 }
+                else { snake.x -= 1 }
             },
-            up(snake){
-                snake.y -= 1
+            up(snake) {
+                if (game.checkBorder['up'](game.size)) { snake.y = game.size - 1 }
+                else { snake.y -= 1 }
             },
-            right(snake){
-                snake.x += 1
+            right(snake) {
+                if (game.checkBorder['right'](game.size)) { snake.x = 0 }
+                else { snake.x += 1 }
             },
-            down(snake){
-                snake.y += 1
+            down(snake) {
+                if (game.checkBorder['down'](game.size)) { snake.y = 0 }
+                else { snake.y += 1 }
             }
         }
     }
 
-    draw(){
-        game.ctx.fillStyle=this.color;
-        game.ctx.fillRect(
-            this.x * game.squareSize,
-            this.y * game.squareSize,
-            game.squareSize,
-            game.squareSize)
+    draw() {
+        for (const tailBlock of this.trail) {
+            game.ctx.fillStyle = this.color;
+            game.ctx.fillRect(
+                tailBlock.x * game.squareSize,
+                tailBlock.y * game.squareSize,
+                game.squareSize,
+                game.squareSize
+            )
+        }
+    }
+
+    growTail(){
+        this.trail.unshift({ x: this.x, y: this.y })
+        
+        while (this.trail.length > this.tailSize) {
+            this.trail.pop();
+        }
     }
 }

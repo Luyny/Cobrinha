@@ -1,0 +1,22 @@
+body{
+    display: grid;
+    grid-template: 
+    "score game info" 1fr
+    /300px 1fr  300px 
+    
+    ;
+}
+#canvas{
+    margin: auto;
+    border: 3px solid black;
+    grid-area: 'game';
+}
+
+#score-div{
+    background-color: rgb(241, 241, 241);
+    min-width: 300px;
+    height: 200px;
+    border: 2px solid rgb(226, 226, 226);
+    text-align: center;
+    /* padding-top: 10px; */
+}

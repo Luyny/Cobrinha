@@ -1,26 +1,30 @@
 import {game} from "./main.js"
 export default function keyListener (event){
     var key = event.key
-    var snake = game.snakes[0]
+    var snake = game.snake
     switch (key) {
-        case 'ArrowLeft':
-            snake.move['left'](snake)
-            console.log('Left')
+        case 'p':
+            game.isPaused = !game.isPaused
+            break;
+        case 'ArrowLeft' || 'a':
+            game.isPaused = false;
+            snake.direction = 'left'
             break;
     
         case 'ArrowUp':
-            snake.move['up'](snake)
-            console.log('Up')
+            game.isPaused = false;
+            snake.direction = 'up'
             break;
     
         case 'ArrowRight':
-            snake.move['right'](snake)
-            console.log('Right')
+            game.isPaused = false;
+            snake.direction = 'right'
             break;
     
         case 'ArrowDown':
-            snake.move['down'](snake)
-            console.log('Down')
+            game.isPaused = false;
+            snake.direction = 'down'
             break;
+
     }
 }
