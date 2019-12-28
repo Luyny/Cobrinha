@@ -27,7 +27,6 @@ export default class Game {
     checkTailCollision() {
         for (let i = 1; i < this.snake.trail.length; i++) {
             if (this.snake.x == this.snake.trail[i].x && this.snake.y == this.snake.trail[i].y) {
-                this.pause()
                 this.isPaused = true
             }
         }
@@ -43,11 +42,6 @@ export default class Game {
                     this.snake.tailSize++
                 }
             }
-    }
-    pause(){
-        this.ctx.fillStyle = 'rgba(1,3,44,0.4)'
-        this.ctx.fillRect(0,0,this.W,this.H);
-        
     }
 
     checkBorder = {

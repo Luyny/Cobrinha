@@ -26,6 +26,9 @@ export default class Snake {
             down(snake) {
                 if (game.checkBorder['down'](game.size)) { snake.y = 0 }
                 else { snake.y += 1 }
+            },
+            undefined(){
+                
             }
         }
     }
