@@ -1,6 +1,5 @@
 import Game from './Game.js';
 import Snake from './Snake.js';
-// import Fruit from './Fruit.js';
 import keyListener from './keyListener.js'
 export { game }
 var canvas = document.getElementById('canvas');

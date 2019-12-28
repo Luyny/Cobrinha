@@ -9,7 +9,7 @@ body{
 #canvas{
     margin: auto;
     border: 3px solid black;
-    grid-area: 'game';
+    grid-area: game;
 }
 
 #score-div{

@@ -24,12 +24,6 @@ export default class Game {
         }
     }
 
-    // drawSnakes() {
-    //     for (const snake of this.snakes) {
-    //         snake.draw()
-    //     }
-    // }
-
     checkTailCollision() {
         for (let i = 1; i < this.snake.trail.length; i++) {
             if (this.snake.x == this.snake.trail[i].x && this.snake.y == this.snake.trail[i].y) {
@@ -40,7 +34,6 @@ export default class Game {
     }
 
     checkFruitCollision() {
-        // for (const snake of this.snakes) {
             for (const fruit of this.fruits) {
                 if (this.snake.x == fruit.x && this.snake.y == fruit.y) {
                     this.snake.score += fruit.score
@@ -50,7 +43,6 @@ export default class Game {
                     this.snake.tailSize++
                 }
             }
-        // }
     }
     pause(){
         this.ctx.fillStyle = 'rgba(1,3,44,0.4)'
