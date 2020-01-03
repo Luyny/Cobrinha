@@ -1,4 +1,3 @@
-// import { Fruit } from "./Fruit.js";
 import Fruit from './Fruit.js';
 import { game } from './main.js';
 
@@ -37,7 +36,6 @@ export default class Game {
         for (const fruit of this.fruits) {
             if (this.snake.x == fruit.x && this.snake.y == fruit.y) {
                 this.snake.score += fruit.score
-                    console.log(`${this.snake.score}`)
                 this.fruits.splice(this.fruits.indexOf(fruit), 1);
                 this.spawnFruit()
                 this.snake.tailSize++

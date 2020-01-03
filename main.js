@@ -29,7 +29,6 @@ function gameLoop() {
     {
         game.snake.move()
         game.snake.growTail()
-    game.checkFruitCollision()
         game.checkTailCollision()
     }
 }
