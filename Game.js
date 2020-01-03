@@ -13,8 +13,9 @@ export default class Game {
         this.squareSize = this.H / this.size
         this.ctx = ctx
     }
-    drawBackground() {
-        this.ctx.fillStyle = 'grey'
+
+    drawBackground(color) {
+        this.ctx.fillStyle = color
         this.ctx.fillRect(0, 0, this.W, this.H)
     }
 
@@ -33,15 +34,15 @@ export default class Game {
     }
 
     checkFruitCollision() {
-            for (const fruit of this.fruits) {
-                if (this.snake.x == fruit.x && this.snake.y == fruit.y) {
-                    this.snake.score += fruit.score
+        for (const fruit of this.fruits) {
+            if (this.snake.x == fruit.x && this.snake.y == fruit.y) {
+                this.snake.score += fruit.score
                     console.log(`${this.snake.score}`)
-                    this.fruits.splice(this.fruits.indexOf(fruit), 1);
-                    this.spawnFruit()
-                    this.snake.tailSize++
-                }
+                this.fruits.splice(this.fruits.indexOf(fruit), 1);
+                this.spawnFruit()
+                this.snake.tailSize++
             }
+        }
     }
 
     checkBorder = {

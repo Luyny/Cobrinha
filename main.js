@@ -22,9 +22,13 @@ function gameLoop() {
     game.snake.draw()
     game.drawFruits()
     score.innerHTML = game.snake.score
-    game.snake.growTail()
     game.checkFruitCollision()
-    game.checkTailCollision()
-    game.snake.move[game.snake.direction](game.snake)
+    if (!game.isPaused) 
+    {
+        game.snake.move()
+        game.snake.growTail()
+    game.checkFruitCollision()
+        game.checkTailCollision()
+    }
 }
 

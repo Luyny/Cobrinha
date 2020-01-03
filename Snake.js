@@ -10,7 +10,7 @@ export default class Snake {
         this.tailSize = 7;
         this.trail = [{x:this.x, y:this.y}]
         this.score = 0
-        this.move = {
+        this.moves = {
             left(snake) {
                 if (game.checkBorder['left'](game.size)) { snake.x = game.size - 1 }
                 else { snake.x -= 1 }
@@ -27,10 +27,14 @@ export default class Snake {
                 if (game.checkBorder['down'](game.size)) { snake.y = 0 }
                 else { snake.y += 1 }
             },
-            undefined(){
-                
+            undefined() {
+
             }
         }
+    }
+
+    move() {
+        this.moves[this.direction](this)
     }
 
     draw() {
@@ -45,9 +49,9 @@ export default class Snake {
         }
     }
 
-    growTail(){
+    growTail() {
         this.trail.unshift({ x: this.x, y: this.y })
-        
+
         while (this.trail.length > this.tailSize) {
             this.trail.pop();
         }
