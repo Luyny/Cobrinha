@@ -4,6 +4,7 @@ import keyListener from './keyListener.js'
 export { game }
 
 var canvas = document.getElementById('canvas');
+    canvas.width = Math.min(screen.height, screen.width) -200
     canvas.height = canvas.width
 var score = document.getElementById('score');
 var ctx = canvas.getContext('2d');
