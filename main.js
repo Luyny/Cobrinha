@@ -18,7 +18,7 @@ game.spawnFruit()
 setInterval(gameLoop, 1000 / 18)
 
 function gameLoop() {
-    game.drawBackground()
+    game.drawBackground('grey')
     game.snake.draw()
     game.drawFruits()
     score.innerHTML = game.snake.score

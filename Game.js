@@ -51,9 +51,9 @@ export default class Game {
         down(size) { if (game.snake.y == size - 1) { return true } }
     }
 
-    spawnFruit() {
+    spawnFruit(fruitType = Math.floor(Math.random() * 2)) {
         let color;
-        switch (Math.floor(Math.random() * 2)) {
+        switch (fruitType) {
             case 0:
                 color = 'orange'
                 break;
