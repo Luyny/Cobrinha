@@ -2,7 +2,9 @@ import Game from './Game.js';
 import Snake from './Snake.js';
 import keyListener from './keyListener.js'
 export { game }
+
 var canvas = document.getElementById('canvas');
+    canvas.height = canvas.width
 var score = document.getElementById('score');
 var ctx = canvas.getContext('2d');
 var game = new Game(40, canvas, ctx)
