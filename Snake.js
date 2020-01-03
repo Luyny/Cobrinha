@@ -47,6 +47,14 @@ export default class Snake {
                 game.squareSize
             )
         }
+        //draw head with different color
+        game.ctx.fillStyle = 'lightgrey';
+        game.ctx.fillRect(
+            this.x * game.squareSize,
+            this.y * game.squareSize,
+            game.squareSize,
+            game.squareSize
+        )
     }
 
     growTail() {
