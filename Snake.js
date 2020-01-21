@@ -38,23 +38,18 @@ export default class Snake {
     }
 
     draw() {
+        var index = 0;
         for (const tailBlock of this.trail) {
             game.ctx.fillStyle = this.color;
+            if (index == 0) game.ctx.fillStyle = 'grey'
             game.ctx.fillRect(
                 tailBlock.x * game.squareSize,
                 tailBlock.y * game.squareSize,
                 game.squareSize,
                 game.squareSize
             )
+            index = undefined
         }
-        //draw head with different color
-        game.ctx.fillStyle = 'lightgrey';
-        game.ctx.fillRect(
-            this.x * game.squareSize,
-            this.y * game.squareSize,
-            game.squareSize,
-            game.squareSize
-        )
     }
 
     growTail() {
