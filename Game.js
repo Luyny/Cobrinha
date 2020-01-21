@@ -16,7 +16,7 @@ export default class Game {
         this.loopInterval;
     }
 
-    drawBackground(color) {
+    drawBackground(color = 'grey') {
         this.ctx.fillStyle = color
         this.ctx.fillRect(0, 0, this.W, this.H)
     }
