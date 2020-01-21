@@ -7,7 +7,7 @@ export default class Snake {
         this.x = x
         this.y = y
         this.direction;
-        this.tailSize = 7;
+        this.tailSize = 4;
         this.trail = [{x:this.x, y:this.y}]
         this.score = 0
         this.moves = {
