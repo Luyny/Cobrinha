@@ -91,7 +91,7 @@ export default class Game {
         document.addEventListener("keydown", this.verifyKey)
         this.snake = new Snake('Luyny',e.options[e.selectedIndex].value)
         this.spawnFruit()
-        this.loopInterval = setInterval(this.loop, 1000 / 12)
+        this.loopInterval = setInterval(this.loop, 1000 / 14)
         start.style.display = 'none'
     }
 
