@@ -16,7 +16,7 @@ export default class Game {
         this.loopInterval;
     }
 
-    drawBackground(color = 'grey') {
+    drawBackground(color = '#34495e') {
         this.ctx.fillStyle = color
         this.ctx.fillRect(0, 0, this.W, this.H)
     }
@@ -54,24 +54,26 @@ export default class Game {
         down(size) { if (game.snake.y == size - 1) { return true } }
     }
 
-    spawnFruit(fruitType = Math.floor(Math.random() * 2)) {
-        let color;
+    spawnFruit(fruitType = Math.floor(Math.random() * 3)) {
+        let fruit;
         switch (fruitType) {
             case 0:
-                color = 'orange'
+                fruit = 'orange'
                 break;
             case 1:
-                color = 'apple'
+                fruit = 'apple'
+                break;
+            case 2:
+                fruit = 'cherry'
                 break;
         }
-        game.fruits.push(new Fruit(color))
+        game.fruits.push(new Fruit(fruit))
     }
 
     loop() {
-        game.drawBackground('lightgrey')
+        game.drawBackground()
         game.snake.draw()
         game.drawFruits()
-        score.innerHTML = game.snake.score
         game.checkFruitCollision()
         if (!game.isPaused) {
             game.snake.move()
@@ -85,16 +87,18 @@ export default class Game {
     }
 
     start() {
+        var e = document.getElementById("color");
         document.addEventListener("keydown", this.verifyKey)
-        this.snake = new Snake('Luyny', 'white')
+        this.snake = new Snake('Luyny',e.options[e.selectedIndex].value)
         this.spawnFruit()
-        this.loopInterval = setInterval(this.loop, 1000 / 18)
+        this.loopInterval = setInterval(this.loop, 1000 / 12)
+        start.style.display = 'none'
     }
 
     end() {
         document.removeEventListener("keydown", this.verifyKey)
         var tail = this.snake.trail.length - 1
-        var score = this.snake.score
+        score.innerHTML = this.snake.score        
         var removeTail = setInterval(() => {
             tail = this.snake.trail.length - 1
             this.snake.trail.splice(tail, 1);
@@ -104,16 +108,23 @@ export default class Game {
                 setTimeout(() => {
                     clearInterval(this.loopInterval)
                     this.snake = undefined
-                    game.drawBackground('grey')
-                    this.ctx.fillStyle = 'black'
-                    this.ctx.fillText("GAME OVER", this.W/2, this.H/2);
-                    this.ctx.fillText(`FINAL SCORE: ${score}`, this.W/2, this.H/2 + 50);
-                    
+                    end.style.display = "grid"
+                    // game.drawBackground('grey')
+                    // game.chooseColor()
+
                 }, 50)
-                setTimeout(()=>{
-                    game.start()
-                },2000)
+                // setTimeout(() => {
+                    // game.start()
+                // }, 2000)
             }
         }, 40)
+    }
+
+    chooseColor(){
+        start.style.display = 'block'
+        end.style.display = 'none'
+        var e = document.getElementById("color");
+        this.ctx.fillStyle = e.options[e.selectedIndex].value;
+        this.ctx.fillRect(game.W/2 - 25,game.H/4,50,50);
     }
 }

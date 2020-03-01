@@ -1,7 +1,7 @@
 import { game } from "./main.js"
 var keyListener = {
     ArrowLeft() {
-        game.state = 'playing';
+        game.isPaused = false
         game.snake.direction = 'left'
     },
     ArrowUp() {
@@ -18,7 +18,6 @@ var keyListener = {
     },
     p() {
         game.isPaused = !game.isPaused
-        game.pause()
     }
 }
 export default keyListener

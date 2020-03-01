@@ -6,9 +6,9 @@ export default class Snake {
         this.color = color
         this.x = x
         this.y = y
-        this.direction;
+        this.direction = 'up';
         this.tailSize = 4;
-        this.trail = [{x:this.x, y:this.y}]
+        this.trail = [{ x: this.x, y: this.y }]
         this.score = 0
         this.moves = {
             left(snake) {
@@ -41,13 +41,22 @@ export default class Snake {
         var index = 0;
         for (const tailBlock of this.trail) {
             game.ctx.fillStyle = this.color;
-            if (index == 0) game.ctx.fillStyle = 'grey'
+            // else {
             game.ctx.fillRect(
                 tailBlock.x * game.squareSize,
                 tailBlock.y * game.squareSize,
                 game.squareSize,
                 game.squareSize
             )
+            // }
+            if (index == 0) {
+                game.ctx.drawImage(document.getElementById(this.direction),
+                    tailBlock.x * game.squareSize,
+                    tailBlock.y * game.squareSize,
+                    game.squareSize,
+                    game.squareSize);
+
+            }
             index = undefined
         }
     }

@@ -1,22 +1,53 @@
 body{
     display: grid;
     grid-template: 
-    "score game info" 1fr
-    /300px 1fr  300px 
-    
-    ;
+    "info game score" 1fr
+    /1fr auto 1fr ;
+    background-color:rgb(28, 36, 46);
 }
+
 #canvas{
-    margin: auto;
-    border: 3px solid black;
+    border: 1px solid white;
     grid-area: game;
 }
 
-#score-div{
-    background-color: rgb(241, 241, 241);
-    min-width: 300px;
-    height: 200px;
-    border: 2px solid rgb(226, 226, 226);
-    text-align: center;
-    /* padding-top: 10px; */
+.info{
+    grid-area: info;
 }
+
+.info a img{
+    width: 50px;
+    padding: 10px;
+    border-radius: 20%;
+    background-color: #34495e;
+}
+
+.start, .end{
+    grid-area: game;
+    position: relative;
+    margin: auto auto;
+    text-align: center;
+    font-size: 30px;
+    color:whitesmoke;
+}
+
+.end{
+    /* margin: auto 0; */
+    display: none;
+    /* display: grid; */
+    grid-template: 
+    "gameover" 10fr
+    "play" 1fr
+    /auto;
+}
+
+.end button{
+    /* margin-top: 300px; */
+    grid-area: play;
+    height: 40px;
+}
+@media screen and (max-width: 1000px) {
+    .info{
+        display:none;
+    }
+  }
